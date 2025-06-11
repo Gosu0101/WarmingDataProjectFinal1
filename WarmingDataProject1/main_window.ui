@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>1200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>기후변화 데이터 분석 프로그램</string>
+  </property>
+  <property name="styleSheet">
+   <string>QMainWindow {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+QPushButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 6px;
+    min-height: 20px;
+}
+QPushButton:hover {
+    background-color: #45a049;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+QComboBox {
+    padding: 8px 12px;
+    font-size: 23px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    min-height: 20px;
+    color: black;  /* 텍스트 색상 명시 */
+}
+
+QComboBox:hover {
+    border: 2px solid #4CAF50;
+    background-color: #f8f8f8;
+    color: black;  /* hover 시에도 텍스트 색상 유지 */
+}
+
+QComboBox:focus {
+    border: 2px solid #4CAF50;
+    background-color: white;
+    color: black;
+}
+
+/* 드롭다운 리스트 스타일 */
+QComboBox QAbstractItemView {
+    border: 1px solid #ddd;
+    background-color: white;
+    color: black;
+    selection-background-color: #e3f2fd;
+    selection-color: black;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px;
+    color: black;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #e3f2fd;
+    color: black;
+}
+
+QComboBox QAbstractItemView::item:selected {
+    background-color: #4CAF50;
+    color: white;
+}
+QTabWidget::pane {
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+}
+QTabBar::tab {
+    background-color: #e0e0e0;
+    padding: 12px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+QTabBar::tab:selected {
+    background-color: white;
+    border-bottom: 2px solid #4CAF50;
+}
+QGroupBox {
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-top: 1ex;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px 0 5px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="main_layout">
+    <item>
+     <widget class="QLabel" name="title_label">
+      <property name="text">
+       <string>🌡️ 기후변화 데이터 분석 프로그램</string>
+      </property>
+      <property name="styleSheet">
+       <string>font-size: 24px;
+font-weight: bold;
+color: #2c3e50;
+padding: 20px;
+text-align: center;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tab_widget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="graph_tab">
+       <attribute name="title">
+        <string>📊 그래프 보기</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="graph_layout">
+        <item>
+         <widget class="QGroupBox" name="graph_control_group">
+            <property name="title">
+                <string>그래프 설정</string>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>800</width>
+                    <height>120</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>16777215</width>
+                    <height>150</height>
+                </size>
+            </property>
+          <layout class="QGridLayout" name="graph_control_layout">
+           <item row="0" column="0">
+            <widget class="QLabel" name="graph_data_label">
+             <property name="text">
+              <string>📊 데이터:</string>
+             </property>
+             <property name="styleSheet">
+              <string>font-weight: bold; color: #2c3e50;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="graph_data_combo"/>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="graph_plot_button">
+             <property name="text">
+              <string>📊 그래프 그리기</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <spacer name="graph_spacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="graph_canvas_widget" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>800</width>
+            <height>600</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string>background-color: white; border: 1px solid #ddd; border-radius: 5px;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="analysis_tab">
+       <attribute name="title">
+        <string>🔍 상관관계 분석</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="analysis_layout">
+        <item>
+         <widget class="QGroupBox" name="analysis_control_group">
+          <property name="title">
+           <string>분석할 데이터 선택</string>
+          </property>
+          <layout class="QGridLayout" name="analysis_control_layout">
+           <item row="0" column="0">
+            <widget class="QLabel" name="x_data_label">
+             <property name="text">
+              <string>X축 데이터:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="x_data_combo"/>
+           </item>
+           <item row="0" column="2">
+            <widget class="QComboBox" name="x_column_combo"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="y_data_label">
+             <property name="text">
+              <string>Y축 데이터:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="y_data_combo"/>
+           </item>
+           <item row="1" column="2">
+            <widget class="QComboBox" name="y_column_combo"/>
+           </item>
+           <item row="2" column="0" colspan="3">
+            <widget class="QPushButton" name="analyze_button">
+             <property name="text">
+              <string>🔍 상관관계 분석하기</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="analysis_result_layout">
+          <item>
+           <widget class="QWidget" name="analysis_canvas_widget" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>600</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string>background-color: white; border: 1px solid #ddd; border-radius: 5px;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="result_text">
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string>border: 1px solid #ddd; border-radius: 5px; padding: 10px;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="data_tab">
+       <attribute name="title">
+        <string>📋 데이터 보기</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="data_layout">
+        <item>
+         <widget class="QWidget" name="control_panel" native="true">
+          <layout class="QHBoxLayout" name="control_layout">
+           <item>
+            <widget class="QLabel" name="data_label">
+             <property name="text">
+              <string>📁 데이터 선택:</string>
+             </property>
+             <property name="styleSheet">
+              <string>font-weight: bold; color: #2c3e50;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="data_combo"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="refresh_button">
+             <property name="text">
+              <string>🔄 새로고침</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="export_button">
+             <property name="text">
+              <string>💾 CSV로 내보내기</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="data_table">
+          <property name="styleSheet">
+           <string>QTableWidget {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    gridline-color: #eee;
+    selection-background-color: #e3f2fd;
+}
+QHeaderView::section {
+    background-color: #f8f9fa;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    font-weight: bold;
+    color: #495057;
+}</string>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="status_label">
+          <property name="text">
+           <string>데이터를 선택하세요.</string>
+          </property>
+          <property name="styleSheet">
+           <string>color: #666; font-style: italic; padding: 10px;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1400</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
