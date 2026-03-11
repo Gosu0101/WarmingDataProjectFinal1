@@ -1,8 +1,7 @@
 # Warming Data Project
 
   > 기후변화와 건강·환경 지표 사이의 관계를 시각적으로 탐색하는 Python 기반 데이터 분석 GUI 프로그램
-  > 온실가스, 기온, 폭염, 온열질환, 감염병 매개 모기, 호흡기 감염 지표를 하나의 화면에서 비교·분석할 수 있도록 설계한 프
-  로젝트
+  > 온실가스, 기온, 폭염, 온열질환, 감염병 매개 모기, 호흡기 감염 지표를 하나의 화면에서 비교·분석할 수 있도록 설계한 프로젝트
 
   [![Python](https://img.shields.io/badge/Python-Data%20Analysis-3776AB?logo=python&logoColor=white)](#)
   [![PyQt5](https://img.shields.io/badge/GUI-PyQt5-41CD52)](#)
